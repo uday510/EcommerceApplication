@@ -199,6 +199,7 @@ const updateCartById = async (req, res) => {
         })
     }
 };
+
 const deleteItemFromCart = async (req, res) => {
 
     const cartId = req.params.id;

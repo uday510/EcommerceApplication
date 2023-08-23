@@ -39,9 +39,9 @@ const createProduct = async (req, res) => {
         });
 
         const savedProduct = await newProduct.save();
-        res.status(201).json(savedProduct);
+        res.status(201).send(savedProduct);
     } catch (error) {
-        res.status(500).json({ error: 'Could not create the product' });
+        res.status(500).send({ error: 'Could not create the product' });
     }
 };
 
@@ -59,9 +59,9 @@ const getAllProductsByCategory = async (req, res) => {
             response[categories[i].name] = products;
         }
 
-        res.status(200).json(response);
+        res.status(200).send(response);
     } catch (error) {
-        res.status(500).json({ error: 'Could not retrieve products' });
+        res.status(500).send({ error: 'Could not retrieve products' });
     }
 };
 
@@ -71,17 +71,17 @@ const getProductById = async (req, res) => {
         const productId = req.params.productId;
 
         if (!productId) {
-            res.status(400).json({ error: 'Product ID is missing' });
+            res.status(400).send({ error: 'Product ID is missing' });
         }
 
         const product = await Product.findById(productId);
         if (!product) {
-            res.status(404).json({ error: 'Product not found' });
+            res.status(404).send({ error: 'Product not found' });
         } else {
-            res.status(200).json(product);
+            res.status(200).send(product);
         }
     } catch (error) {
-        res.status(500).json({ error: 'Could not retrieve product details' });
+        res.status(500).send({ error: 'Could not retrieve product details' });
     }
 };
 
