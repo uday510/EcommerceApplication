@@ -6,8 +6,8 @@ const addToCart = async (req, res) => {
     try {
         const userId = req.userId;
 
-        const user = await User.findOne({ userId : userId });
-    
+        const user = await User.findOne({ userId: userId });
+
         // Check if the user already has a cart
         let userCart = await Cart.findOne({ user: user._id });
 
@@ -50,7 +50,7 @@ const addToCart = async (req, res) => {
                     message: `Product with id ${productId} does not exist.`,
                 });
             }
-            
+
             // Check if the product is already in the cart
             const existingCartItem = userCart.products.find(
                 (cartProduct) => cartProduct.product.toString() === productId
@@ -83,6 +83,35 @@ const addToCart = async (req, res) => {
     }
 }
 
+const getCartById = async (req, res) => {
+
+    try {
+
+        const cartId = req.params.id;
+
+        // Check if the cart exists in the database
+        if (!cartId) {
+            return res.status(400).send({
+                message: "Please provide a cart id.",
+            });
+        }
+
+        // populate method is used to get the product details from the product collection
+        const cart = await Cart.findById(cartId).populate('products.product');
+
+        res.status(200).send({
+            message: 'Cart fetched successfully.',
+            cart,
+        });
+
+    } catch (error) {
+        res.status(500).send({
+            message: error.message || "Some error occurred while fetching the cart.",
+        });
+    }
+
+};
 module.exports = {
-    addToCart
+    addToCart,
+    getCartById
 }
