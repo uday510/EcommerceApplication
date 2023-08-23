@@ -255,3 +255,58 @@ Here are the routes related to products in your API.
     "category": "64e506a6815cfad84b02260a",
     "__v": 0
     }
+
+## Authentication Routes
+
+Routes related to user authentication
+
+### Sign Up
+
+- **Route**: `POST /app/api/v1/auth/signup`
+- **Description**: Create a new user account.
+- **Example**:
+  ```http
+  POST /app/api/v1/auth/signup
+  Content-Type: application/json
+
+  Request
+
+  {
+    "name": "uday teja",
+    "userId": "uday",
+    "email": "uday@email.com",
+    "password": "most_secure_password"
+  }
+  
+  Response
+  {
+    "message": "User created successfully",
+    "data": {
+        "name": "uday teja",
+        "userId": "uday",
+        "email": "uday@email.com"
+    }
+  }
+  
+### Sign In
+- **Route**: `POST /app/api/v1/auth/signin`
+- **Description**: Sign in as an existing user.
+- **Example**:
+   ```http
+  POST /app/api/v1/auth/signin
+  Content-Type: application/json
+
+   Request 
+   {
+    "userId": "uday",
+    "password": "Budd@12344"
+    }
+
+   Response
+   {
+    "message": "Token sent successfully",
+    "name": "uday teja",
+    "userId": "uday",
+    "email": "uday@gmail.com",                
+    "accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InVkYXkiLCJpYXQiOjE2OTI3ODAyODYsImV4cCI6MTY5Mjc4MDg4Nn0"
+    }
