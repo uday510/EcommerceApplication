@@ -91,11 +91,11 @@ Here are the routes related to categories APIs.
   POST /api/v1/category
   Content-Type: application/json
   
-  - Request
+  Request
   {
     "name": "electronics",
   }
-  - Response
+  Response
       {
     "name": "electronics",
     "_id": "64e506a6815cfad84b02260a",
@@ -112,7 +112,7 @@ Here are the routes related to categories APIs.
   GET /api/v1/category
   Content-Type: application/json
 
-  - Response
+   Response
           [
     {
         "id": "64e506a6815cfad84b02260a",
@@ -141,7 +141,7 @@ Here are the routes related to categories APIs.
   GET /api/v1/category
   Content-Type: application/json
 
-  - Response
+  Response
     {
     "_id": "64e506b2815cfad84b02260e",
     "name": "clothing",
@@ -161,7 +161,7 @@ Here are the routes related to products in your API.
   POST /api/v1/product
   Content-Type: application/json
 
-   -Request-
+   Request
   {
     "title": "Smartphone",
     "price": 499.99,
@@ -170,7 +170,7 @@ Here are the routes related to products in your API.
     "categoryId": "electronics"
   }
 
-  -Response-
+  Response
   {
     "title": "Smartphone",
     "price": 499.99,
@@ -186,7 +186,7 @@ Here are the routes related to products in your API.
 - **Description**: Retrieve a list of all products within a specific category.
 - **Example**:
   ```http
-    -Response-
+    Response
       {
     "electronics": [
         {
@@ -245,7 +245,7 @@ Here are the routes related to products in your API.
 - **Description**: Retrieve a single product
 - **Example**:
     ```http
-    -Response-
+    Response
     {
     "_id": "64e50e8f7b762080260b6f18",
     "title": "iPhone 13 Pro",
