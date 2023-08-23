@@ -80,7 +80,7 @@ User authentication is implemented using JWT (JSON Web Tokens) for secure API ac
 
 ## Category Routes
 
-Here are the routes related to categories in your API.
+Here are the routes related to categories APIs.
 
 ### Create a New Category
 
@@ -147,3 +147,46 @@ Here are the routes related to categories in your API.
     "name": "clothing",
     "__v": 0
     }
+
+## Product Routes
+
+Here are the routes related to products in your API.
+
+### Create a New Product
+
+- **Route**: `POST /api/v1/product`
+- **Description**: Create a new product.
+- **Example Request**:
+  ```http
+  POST /api/v1/product
+  Content-Type: application/json
+
+   -Request-
+  {
+    "title": "Smartphone",
+    "price": 499.99,
+    "description": "A high-quality smartphone.",
+    "availability": true,
+    "categoryId": "electronics"
+  }
+
+  -Response-
+  {
+    "title": "Smartphone",
+    "price": 499.99,
+    "description": "A high-quality smartphone.",
+    "availability": true,
+    "category": "64e506a6815cfad84b02260a",
+    "_id": "64e5ba8fd35b77a0d0e431cd",
+    "__v": 0
+  }
+  
+
+
+    
+
+    
+
+
+
+
