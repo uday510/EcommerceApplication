@@ -84,11 +84,11 @@ Here are the routes related to categories APIs.
 
 ### Create a New Category
 
-- **Route**: `POST /api/v1/category`
+- **Route**: `POST /api/v1/categories`
 - **Description**: Create a new category.
 - **Example**:
   ```http
-  POST /api/v1/category
+  POST /api/v1/categories
   Content-Type: application/json
   
   Request
@@ -104,12 +104,12 @@ Here are the routes related to categories APIs.
   
   
 ### Retrieve All Categories
-- **Route**: GET /api/v1/category
+- **Route**: `GET /api/v1/categories`
 - **Description**: Retrieve a list of all categories.
 - **Example**:
   
   ```http
-  GET /api/v1/category
+  GET /api/v1/categories
   Content-Type: application/json
 
    Response
@@ -132,13 +132,13 @@ Here are the routes related to categories APIs.
     }
     ]
 
-### Retrieve  Category by ID
-- **Route**: GET /api/v1/category/:categoryId
+### Retrieve Category by ID
+- **Route**: `GET /api/v1/categories/:categoryId`
 - **Description**: Retrieve a category
 - **Example**:
 
     ```http
-  GET /api/v1/category
+  GET /api/v1/categories
   Content-Type: application/json
 
   Response
@@ -154,11 +154,11 @@ Here are the routes related to products in your API.
 
 ### Create a New Product
 
-- **Route**: `POST /api/v1/product`
+- **Route**: `POST /api/v1/products`
 - **Description**: Create a new product.
 - **Example Request**:
   ```http
-  POST /api/v1/product
+  POST /api/v1/products
   Content-Type: application/json
 
    Request
@@ -182,7 +182,7 @@ Here are the routes related to products in your API.
   }
   
 ### Retrieve All Products by Category
-- **Route**: GET /api/v1/product
+- **Route**: `GET /api/v1/products`
 - **Description**: Retrieve a list of all products within a specific category.
 - **Example**:
   ```http
@@ -241,7 +241,7 @@ Here are the routes related to products in your API.
     }
 
 ### Retrieve a Single Product by ID
-- **Route**: GET /api/v1/product/:productId
+- **Route**: `GET /api/v1/products/:productId`
 - **Description**: Retrieve a single product
 - **Example**:
     ```http
