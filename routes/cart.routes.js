@@ -10,5 +10,9 @@ module.exports = (app) => {
 
     // update cart by cart id
     app.patch("/app/api/v1/cart/:id", [authUser.verifyToken], cartController.updateCartById);
-    
+
+    // delete an item from the cart
+
+    app.delete("/app/api/v1/cart/:id", [authUser.verifyToken], cartController.deleteItemFromCart);
+
  };

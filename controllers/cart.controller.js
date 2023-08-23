@@ -109,7 +109,7 @@ const getCartById = async (req, res) => {
     }
 };
 
-const updateCartById = async (req, res) => { 
+const updateCartById = async (req, res) => {
 
     const cartId = req.params.id;
 
@@ -132,8 +132,8 @@ const updateCartById = async (req, res) => {
         });
     }
 
-    try { 
-        
+    try {
+
         const userId = req.userId;
 
         const user = await User.findOne({ userId: userId });
@@ -146,7 +146,7 @@ const updateCartById = async (req, res) => {
             return res.status(404).send({
                 message: `Cart with id ${cartId} does not exist.`,
             });
-         }
+        }
 
         for (const item of items) {
 
@@ -184,7 +184,7 @@ const updateCartById = async (req, res) => {
                 });
             }
         }
-        
+
         // Save the user's cart
         const savedCart = await userCart.save();
 
@@ -198,13 +198,61 @@ const updateCartById = async (req, res) => {
             message: err.message || "Some error occurred while updating the cart.",
         })
     }
-
-
-
-
 };
+const deleteItemFromCart = async (req, res) => {
+
+    const cartId = req.params.id;
+    const productId = req.body.productId;
+
+    if (!cartId) {
+        return res.status(400).send({
+            message: "Please provide a cart id.",
+        });
+    }
+    if (!productId) {
+        return res.status(400).send({
+            message: "Please provide a product id.",
+        });
+    }
+
+    try {
+        const cart = await Cart.findById(cartId);
+
+        if (!cart) {
+            return res.status(404).send({
+                message: `Cart with id ${cartId} does not exist.`,
+            });
+        }
+
+        // Check if the item to remove exists in the cart
+        const itemIndex = cart.products.findIndex((item) => item.product.toString() === productId);
+
+        if (itemIndex === -1) {
+            return res.status(404).json({ message: 'Item not found in the cart' });
+        }
+
+        // Remove the item from the cart
+        cart.products.splice(itemIndex, 1);
+
+        // Save the updated cart
+        const updatedCart = await cart.save();
+
+        res.status(200).send({
+            message: 'Item removed from cart successfully.',
+            cart: updatedCart,
+        });
+    } catch (err) {
+
+        return res.status(500).send({
+            message: err.message || "Some error occurred while removing the item from the cart.",
+        });
+
+    }
+};
+
 module.exports = {
     addToCart,
     getCartById,
-    updateCartById
+    updateCartById,
+    deleteItemFromCart
 }
