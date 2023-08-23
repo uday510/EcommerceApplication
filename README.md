@@ -180,6 +180,7 @@ Here are the routes related to products in your API.
     "_id": "64e5ba8fd35b77a0d0e431cd",
     "__v": 0
   }
+  
 ### Retrieve All Products by Category
 - **Route**: GET /api/v1/product
 - **Description**: Retrieve a list of all products within a specific category.
