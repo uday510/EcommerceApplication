@@ -180,10 +180,6 @@ Here are the routes related to products in your API.
     "_id": "64e5ba8fd35b77a0d0e431cd",
     "__v": 0
   }
-  
-
-
-    
 
     
 
