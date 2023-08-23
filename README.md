@@ -78,5 +78,72 @@ User authentication is implemented using JWT (JSON Web Tokens) for secure API ac
 
 
 
+## Category Routes
 
+Here are the routes related to categories in your API.
 
+### Create a New Category
+
+- **Route**: `POST /api/v1/category`
+- **Description**: Create a new category.
+- **Example**:
+  ```http
+  POST /api/v1/category
+  Content-Type: application/json
+  
+  - Request
+  {
+    "name": "electronics",
+  }
+  - Response
+      {
+    "name": "electronics",
+    "_id": "64e506a6815cfad84b02260a",
+    "__v": 0
+    }
+  
+  
+### Retrieve All Categories
+- **Route**: GET /api/v1/category
+- **Description**: Retrieve a list of all categories.
+- **Example**:
+  
+  ```http
+  GET /api/v1/category
+  Content-Type: application/json
+
+  - Response
+          [
+    {
+        "id": "64e506a6815cfad84b02260a",
+        "name": "electronics"
+    },
+    {
+        "id": "64e506b2815cfad84b02260e",
+        "name": "clothing"
+    },
+    {
+        "id": "64e506c9815cfad84b022610",
+        "name": "books"
+    },
+    {
+        "id": "64e506d5815cfad84b022612",
+        "name": "sports"
+    }
+    ]
+
+### Retrieve  Categorie by ID
+- **Route**: GET /api/v1/category/:categoryId
+- **Description**: Retrieve a category
+- **Example**:
+
+    ```http
+  GET /api/v1/category
+  Content-Type: application/json
+
+  - Response
+    {
+    "_id": "64e506b2815cfad84b02260e",
+    "name": "clothing",
+    "__v": 0
+    }
