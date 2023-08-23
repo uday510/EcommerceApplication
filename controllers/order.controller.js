@@ -83,9 +83,66 @@ exports.createOrder = async (req, res) => {
 exports.getOrders = async (req, res) => {
     // Implement the logic to retrieve orders here
 
-    
+    try {
+        const userId = req.userId;
+
+        const user = await User.findOne({ userId: userId });
+
+        if (!user) {
+            return res.status(404).send({
+                message: "User not found"
+            });
+        }
+
+        const orders = await Order.find({ user: user._id });
+
+        if (!orders) {
+            return res.status(404).send({
+                message: "Orders not found"
+            });
+        }
+        return res.status(200).send({
+            message: "Orders retrieved successfully",
+            orders
+        });
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({
+            message: "Unable to retrieve orders, please try again later",
+        });
+     }
 };
 
 exports.getOrder = async (req, res) => {
     // Implement the logic to retrieve a single order by ID here
+
+    try {
+       
+        const orderId = req.params.orderId;
+
+        if (!orderId) {
+            return res.status(400).send({
+                message: "Order ID is required"
+            });
+        }
+
+        const order = await Order.findById(orderId);
+
+        if (!order) {
+            return res.status(404).send({
+                message: "Order not found"
+            });
+        }
+
+        return res.status(200).send({
+            message: "Order retrieved successfully",
+            order
+        });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({
+            message: "Unable to retrieve order, please try again later",
+        });
+   }
 };
