@@ -240,7 +240,7 @@ Here are the routes related to products in your API.
     "pets": []
     }
 
-### Retrieve All Products by Category
+### Retrieve a Single Product by ID
 - **Route**: GET /api/v1/product/:productId
 - **Description**: Retrieve a single product
 - **Example**:
