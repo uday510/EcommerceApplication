@@ -132,7 +132,7 @@ Here are the routes related to categories APIs.
     }
     ]
 
-### Retrieve  Categorie by ID
+### Retrieve  Category by ID
 - **Route**: GET /api/v1/category/:categoryId
 - **Description**: Retrieve a category
 - **Example**:
@@ -180,9 +180,61 @@ Here are the routes related to products in your API.
     "_id": "64e5ba8fd35b77a0d0e431cd",
     "__v": 0
   }
-
-    
-
-
-
-
+### Retrieve All Products by Category
+- **Route**: GET /api/v1/product
+- **Description**: Retrieve a list of all products within a specific category.
+- **Example**:
+  ```http
+    -Response-
+      {
+    "electronics": [
+        {
+            "_id": "64e50e8f7b762080260b6f18",
+            "title": "iPhone 13 Pro",
+            "price": 999.99,
+            "description": "The latest iPhone with advanced features.",
+            "availability": true,
+            "category": "64e506a6815cfad84b02260a",
+            "__v": 0
+        },
+    ],
+    "clothing": [
+        {
+            "_id": "64e50ea37b762080260b6f20",
+            "title": "Men's Slim-Fit Shirt",
+            "price": 29.99,
+            "description": "Classic slim-fit shirt for men.",
+            "availability": true,
+            "category": "64e506b2815cfad84b02260e",
+            "__v": 0
+        },
+    ],
+    "books": [
+        {
+            "_id": "64e50e777b762080260b6f10",
+            "title": "The Great Gatsby (Book)",
+            "price": 9.99,
+            "description": "A classic novel by F. Scott Fitzgerald.",
+            "availability": true,
+            "category": "64e506c9815cfad84b022610",
+            "__v": 0
+        },
+    ],
+    "sports": [],
+    "beauty": [
+        {
+            "_id": "64e50df48fb10484e307f460",
+            "title": "Skin Moisturizer",
+            "price": 14.99,
+            "description": "Hydrating moisturizer for all skin types.",
+            "availability": true,
+            "category": "64e506dc815cfad84b022614",
+            "__v": 0
+        },
+    ],
+    "games": [],
+    "health": [],
+    "food": [],
+    "automotive": [],
+    "pets": []
+    }
