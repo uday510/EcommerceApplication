@@ -239,3 +239,19 @@ Here are the routes related to products in your API.
     "automotive": [],
     "pets": []
     }
+
+### Retrieve All Products by Category
+- **Route**: GET /api/v1/product/:productId
+- **Description**: Retrieve a single product
+- **Example**:
+    ```http
+    -Response-
+    {
+    "_id": "64e50e8f7b762080260b6f18",
+    "title": "iPhone 13 Pro",
+    "price": 999.99,
+    "description": "The latest iPhone with advanced features.",
+    "availability": true,
+    "category": "64e506a6815cfad84b02260a",
+    "__v": 0
+    }
