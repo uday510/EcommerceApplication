@@ -3,11 +3,11 @@ const productController = require("../controllers/product.controller");
 module.exports = (app) => {
 
     // Create a new Product
-    app.post("/api/v1/product", productController.createProduct);
+    app.post("/api/v1/products", productController.createProduct);
 
     // Retrieve all Products
-    app.get("/api/v1/product", productController.getAllProductsByCategory);
+    app.get("/api/v1/products", productController.getAllProductsByCategory);
 
     // Retrieve a single Product with productId
-    app.get("/api/v1/product/:productId", productController.getProductById);
+    app.get("/api/v1/products/:productId", productController.getProductById);
 }
