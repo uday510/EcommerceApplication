@@ -7,7 +7,6 @@ const createProduct = async (req, res) => {
 
         const { title, price, description, availability, categoryId } = req.body;
 
-
         // Validate required fields
         if (!title || !price || !description || !availability || !categoryId) {
             res.status(400).send({ error: 'Required fields are missing' });

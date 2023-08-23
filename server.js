@@ -9,6 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 // Routes
 require("./routes")(app);
 
@@ -18,7 +19,10 @@ app.use((req, res) => {
     res.status(404).send( {url: req.originalUrl + ' not found on this server'});
 });
 
-// DB connection
+// REGION : AWS Mumbai (ap-south-1)
+// Cluster Tier : M0 Sandbox (General)
+// Read & Write speed : 100 IOPS
+
 mongoose
     .connect(dbConfig.DB_URL, {
         useNewUrlParser: true, // To avoid Deprecation Warning
