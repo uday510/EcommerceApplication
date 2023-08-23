@@ -18,8 +18,6 @@ const addToCart = async (req, res) => {
                 products: [],
             });
         }
-
-
         // Get products from the request body
         const { items } = req.body; // items is an array of objects
 
@@ -109,9 +107,104 @@ const getCartById = async (req, res) => {
             message: error.message || "Some error occurred while fetching the cart.",
         });
     }
+};
+
+const updateCartById = async (req, res) => { 
+
+    const cartId = req.params.id;
+
+    // Check if the cart exists in the database
+    if (!cartId) {
+        return res.status(400).send({
+            message: "Please provide a cart id.",
+        });
+    }
+
+    // Get products from the request body
+
+    const { items } = req.body; // items is an array of objects
+
+    // Validate request
+    // Validate request
+    if (!items || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).send({
+            message: "Please check the items array in the request body and try again.",
+        });
+    }
+
+    try { 
+        
+        const userId = req.userId;
+
+        const user = await User.findOne({ userId: userId });
+
+        // Check if the user already has a cart
+        let userCart = await Cart.findOne({ user: user._id });
+
+
+        if (!userCart) {
+            return res.status(404).send({
+                message: `Cart with id ${cartId} does not exist.`,
+            });
+         }
+
+        for (const item of items) {
+
+            const { productId, quantity } = item;
+
+            // Validate request
+            if (!productId) {
+                return res.status(400).send({
+                    message: "Please check the items object in the items array and try again.",
+                });
+            }
+
+            // Check if the product exists in the database
+            const existingProduct = await Product.findById(productId);
+
+            if (!existingProduct) {
+                return res.status(404).send({
+                    message: `Product with id ${productId} does not exist.`,
+                });
+            }
+
+            // Check if the product is already in the cart
+            const existingCartItem = userCart.products.find(
+                (cartProduct) => cartProduct.product.toString() === productId
+            );
+
+            if (existingCartItem) {
+                // Update the quantity of the existing cart item
+                existingCartItem.quantity += quantity || 1;
+            } else {
+                // Add the product to the cart
+                userCart.products.push({
+                    product: productId,
+                    quantity: quantity || 1,
+                });
+            }
+        }
+        
+        // Save the user's cart
+        const savedCart = await userCart.save();
+
+        res.status(201).send({
+            message: 'Products added to cart successfully.',
+            cart: savedCart,
+        });
+
+    } catch (err) {
+        return res.status(500).send({
+            message: err.message || "Some error occurred while updating the cart.",
+        })
+    }
+
+
+
 
 };
 module.exports = {
     addToCart,
-    getCartById
+    getCartById,
+    updateCartById
 }

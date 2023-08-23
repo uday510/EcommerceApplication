@@ -8,4 +8,7 @@ module.exports = (app) => {
     // get cart by cart id
     app.get("/app/api/v1/cart/:id", [authUser.verifyToken], cartController.getCartById);
 
+    // update cart by cart id
+    app.patch("/app/api/v1/cart/:id", [authUser.verifyToken], cartController.updateCartById);
+    
  };
