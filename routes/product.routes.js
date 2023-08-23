@@ -1,4 +1,3 @@
-const { authUser } = require("../middlewares/index")
 const productController = require("../controllers/product.controller");
 
 module.exports = (app) => {
