@@ -67,6 +67,8 @@ The Ecommerce Application provides a set of RESTful APIs for managing products, 
 
 The application is integrated with MongoDB (or MongoDB Atlas), a cloud-based database service. It stores product data, user information, and order history. The database schema and models can be found in the models directory.
 
+The schema Diagram can be found [here](https://photos.app.goo.gl/RnceDnvcDPCed2UJ6)
+
 
 
 ## Authentication and Security
