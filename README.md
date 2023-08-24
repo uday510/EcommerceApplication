@@ -47,7 +47,7 @@ To get the application up and running, follow these steps:
 3. Start the application:
 
     ```bash
-    nodemon start
+    npm start
     
 ### Usage
 
