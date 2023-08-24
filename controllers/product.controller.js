@@ -26,7 +26,6 @@ const createProduct = async (req, res) => {
             title: title,
         });
 
-
         if (product.length > 0) {
             return res.status(400).send({ error: 'Product already exists' });
         }

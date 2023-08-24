@@ -8,12 +8,19 @@ exports.createOrder = async (req, res) => {
         
         const cartId = req.body.cartId;
         const userId = req.userId;
+        const shippingAddress = req.body.shippingAddress;
+
 
         if (!cartId || !userId) {
             return res.status(400).send({
                 message: "Cart ID and User ID are required"
             });
         }
+        if (!shippingAddress) {
+            return res.status(400).send({
+                message: "Shipping address is required"
+            });
+         }
 
         // Find the user
         const user = await User.findOne({ userId: userId });
@@ -53,6 +60,7 @@ exports.createOrder = async (req, res) => {
             user: user._id,
             products: cart.products,
             totalAmount: totalAmount,
+            shippingAddress: shippingAddress,
         });
 
         const savedOrder = await order.save();

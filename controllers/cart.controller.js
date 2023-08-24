@@ -18,6 +18,7 @@ const addToCart = async (req, res) => {
                 products: [],
             });
         }
+
         // Get products from the request body
         const { items } = req.body; // items is an array of objects
 
@@ -40,8 +41,6 @@ const addToCart = async (req, res) => {
 
             // Check if the product exists in the database
             const existingProduct = await Product.findById(productId);
-
-            // console.log('EXISTING PRODUCT >>> ', existingProduct);
 
             if (!existingProduct) {
                 return res.status(404).send({
@@ -80,7 +79,6 @@ const addToCart = async (req, res) => {
         });
     }
 }
-
 const getCartById = async (req, res) => {
 
     try {
@@ -124,7 +122,6 @@ const updateCartById = async (req, res) => {
 
     const { items } = req.body; // items is an array of objects
 
-    // Validate request
     // Validate request
     if (!items || !Array.isArray(items) || items.length === 0) {
         return res.status(400).send({

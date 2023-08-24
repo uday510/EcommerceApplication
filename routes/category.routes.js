@@ -10,7 +10,6 @@ module.exports = (app) => {
 
     // Retrieve a single Category with categoryId
     app.get("/app/api/v1/categories/:categoryId", categoryController.getCategoryById);
-
 }
 
 
