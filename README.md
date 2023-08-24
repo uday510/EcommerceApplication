@@ -68,13 +68,14 @@ The Ecommerce Application provides a set of RESTful APIs for managing products, 
 The application is integrated with MongoDB (or MongoDB Atlas), a cloud-based database service. It stores product data, user information, and order history. The database schema and models can be found in the models directory.
 
 
-## License
-
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
-
-
 
 ## Authentication and Security
 
 User authentication is implemented using JWT (JSON Web Tokens) for secure API access. User passwords are securely hashed and stored in the database.
+
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.md](LICENSE.md) file for details.
+
 
